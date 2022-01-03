@@ -1,11 +1,11 @@
 import React from 'react'
 
-import CalanderWrapper from './calanderWrapper'
-export default function ContentWrapper(){
+import CalenderWrapper from './calenderWrapper'
+export default function ContentWrapper(props){
     return(
-        <div style={{border: "1px solid green"}}>
+        <div style={{border: "3px solid green"}}>
             <h1>Content Wrapper Component </h1>
-            <CalanderWrapper/>
+            <CalenderWrapper month={props.month} />
         </div>
     )
 }
