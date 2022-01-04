@@ -17,6 +17,7 @@ export default class App extends Component {
     }
 
     this.handleMonthChange = this.handleMonthChange.bind(this)
+    this.handleMonthButtons = this.handleMonthButtons.bind(this)
   }
 
   calculateDateData(){
@@ -26,7 +27,7 @@ export default class App extends Component {
     return {month, year}
   }
   componentDidMount(){
-    fetch('https://api-calander-ajm.herokuapp.com/month/get')
+    fetch('https://api-calender-ajm.herokuapp.com/month/get')
     .then((response) => response.json())
     .then(data => this.setState({
       month: data.filter(month => month.name === this.now.month && month.year === this.now.year)[0],
@@ -40,13 +41,21 @@ export default class App extends Component {
     const newMonthData = this.state.monthData.filter(month => month.name === newMonthName)[0]
     this.setState({month: newMonthData})
   }
+  handleMonthButtons(direction){
+    const currentMonthIndex = this.monthList.indexOf(this.state.month.name)
+    const newMonthName = this.monthList[direction === "next" ? currentMonthIndex + 1 : currentMonthIndex - 1]
+    return(
+      newMonthName
+    )
+    
 
+  }
  
 
   render() {
     return (
       <div className='app'>
-        <Header monthName={this.state.month.name}  handleMonthChange={this.handleMonthChange}/>
+        <Header monthName={this.state.month.name}  handleMonthChange={this.handleMonthChange} newMonthName = {this.handleMonthButtons}/>
         <ContentWrapper month={this.state.month}/>
         <Footer monthYear={this.state.month.year}/>
       </div>

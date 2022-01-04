@@ -14,7 +14,7 @@ export default function CalenderWrapper(props){
         }
         for(let i=1; i<= props.month.days_in_month; i++){
             calenderBoxesArray.push(
-                <CalenderBox key={`${props.month.id}-${i}`} date ={i} />
+                <CalenderBox key={`${props.month.id}-${i}`} date ={i} month = {props.month} />
             )
         }
         for(let i=1;  i <= 42 - props.month.days_in_month - props.month.start_day; i++){

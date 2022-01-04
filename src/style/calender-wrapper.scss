@@ -1,33 +1,46 @@
 .calender-wrapper{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    width: auto;
-    height: 60vh;
     margin: 10px;
     padding: 10px;
+ 
 
     .day-of-week{
         font-size: 40px;
         font-weight: 575;
+        margin: 5px;
     }
 
     .calender-box{
-        width: auto;
-        height: 150px;
+        
+        min-width: 250px;
+        height: 147px;
        border: 1px solid black;
        display: flex;
        flex-direction: column;
+       
+
     
        &:hover {
            background-color: #e8ac6a;
-           font-weight: 1000;
+           
        }
-       
+
+
         .text-input{
             background-color:#f7f0de ;
-            font-size: 14px;
-            font-weight: 500;
+            font-size: 16px;
+            font-weight: 600;
             padding:2px;
+            border: none;
+            height: 125px;
+            font-family: 'Jost', sans-serif; 
+            resize: none;
+
+            &:focus {
+                outline: none;
+            }
+
 
         }
         .date {
@@ -35,6 +48,17 @@
             padding-left: 5px;
             border-bottom: 3px solid black;
         }
+       
     }
+    .overflow {
+        opacity: .5;
+
+        &:hover {
+            background-color: #e6cfb7;
+            font-weight: 100;
+  
+        }
+       }
+
 
 }
