@@ -7,18 +7,19 @@ export default function CalenderWrapper(props){
     const renderCalenderBoxes = () =>{
         const calenderBoxesArray=[];
         for(let i=1; i<= props.month.start_day; i++){
+            const date = props.month.days_in_previous_month - props.month.start_day + i
             calenderBoxesArray.push(
-                <CalenderBox/>
+                <CalenderBox key={`P-${i}`} date ={date}  overflow/>
             )
         }
         for(let i=1; i<= props.month.days_in_month; i++){
             calenderBoxesArray.push(
-                <CalenderBox/>
+                <CalenderBox key={`${props.month.id}-${i}`} date ={i} />
             )
         }
-        for(let i=1; 42 - props.month.days_in_month - props.month.start_day; i++){
+        for(let i=1;  i <= 42 - props.month.days_in_month - props.month.start_day; i++){
             calenderBoxesArray.push(
-                <CalenderBox/>
+                <CalenderBox key={`N-${i}`} date ={i} overflow/>
             )
         }
 
@@ -27,7 +28,7 @@ export default function CalenderWrapper(props){
 
 
     return(
-        <div style={{border: "3px solid yellow"}}>
+        <div className='calender-wrapper'>
             <DayOfWeek day="Sunday" />
             <DayOfWeek day="Monday" />
             <DayOfWeek day="Tuesday" />
